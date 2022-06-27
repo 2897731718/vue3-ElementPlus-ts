@@ -1,4 +1,5 @@
 # vue3-ElementPlus-ts
+
 一套通用并且适合学习的模板-会结合博客进行讲解-总结抽离出一套流程
 
 vite2 + vue3 + elementPlus + ts 的后台管理
@@ -55,5 +56,7 @@ yarn build
   - `ci` 持续集成
   - `types` 类型定义文件更改
   - `wip` 开发中
+
+[博客链接][https://juejin.cn/column/7113503337902768159]
 
 如果你觉得这个项目对你有帮助，就点一个 star 吧 并且文章点赞! 我会坚持把它更新下去的!!!
