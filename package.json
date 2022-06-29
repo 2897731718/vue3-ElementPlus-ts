@@ -9,8 +9,13 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@types/node": "^18.0.0",
+    "axios": "^0.27.2",
+    "element-plus": "^2.2.6",
     "eslint-loader": "^4.0.2",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "4",
+    "vuex": "4"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.29.0",
@@ -21,8 +26,11 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^9.1.1",
     "prettier": "^2.7.1",
+    "rollup-plugin-commonjs": "^10.1.0",
     "typescript": "^4.6.0-dev.20220122",
     "vite": "^2.9.9",
+    "vite-plugin-cdn-import": "^0.3.5",
+    "vite-plugin-compression": "^0.5.1",
     "vue-eslint-parser": "^9.0.3",
     "vue-tsc": "^0.34.7"
   }
