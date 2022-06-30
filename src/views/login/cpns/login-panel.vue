@@ -33,13 +33,18 @@ import LoginAccount from './login-account.vue'
 import LoginPhone from './login-phone.vue'
 
 // 1.定义属性
+// 记住密码
 const isKeepPassword = ref(true)
+// 获取输入账号信息 模块
 const accountRef = ref<InstanceType<typeof LoginAccount>>()
+// 获取输入手机号 验证码
 const phoneRef = ref<InstanceType<typeof LoginPhone>>()
+// 获取登录方式模块
 const currentTab = ref('account')
 
 // 2.定义方法
 const handleLoginClick = () => {
+  console.log(accountRef.value)
   if (currentTab.value === 'account') {
     accountRef.value?.loginAction(isKeepPassword.value)
   } else {

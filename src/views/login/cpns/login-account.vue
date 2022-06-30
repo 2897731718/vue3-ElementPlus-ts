@@ -15,17 +15,18 @@
 import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { ElForm } from 'element-plus'
+// 导入本地缓存模块
 import localCache from '../../../utils/cache'
-
+// 导入账号密码输入规则
 import { rules } from '../config/account-config'
 
 const store = useStore()
-
+// 获取账号密码
 const account = reactive({
   name: localCache.getCache('name') ?? '',
   password: localCache.getCache('password') ?? '',
 })
-
+// 获取哪种登录方式
 const formRef = ref<InstanceType<typeof ElForm>>()
 
 const loginAction = (isKeepPassword: boolean) => {
@@ -46,6 +47,10 @@ const loginAction = (isKeepPassword: boolean) => {
     }
   })
 }
+// 因为使用了 setup 语法糖 父组件要获取函数属性的话 就要使用这个暴露 因为没有 return 了
+defineExpose({
+  loginAction,
+})
 </script>
 
 <style scoped></style>

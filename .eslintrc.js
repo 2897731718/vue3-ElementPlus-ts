@@ -38,5 +38,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-explicit-any': 'off', // 忽略 any 的警告
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'vue/multi-word-component-names': 'off', // 关闭命名校验
   },
 }

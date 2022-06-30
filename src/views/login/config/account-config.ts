@@ -1,4 +1,4 @@
-// 编写好规则
+// 编写好账号密码输入规则
 export const rules = {
   name: [
     {

@@ -1,9 +1,9 @@
 let BASE_URL = ''
 const TIME_OUT = 10000
 
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.MODE === 'development') {
   BASE_URL = 'http://123.207.32.32:8000/'
-} else if (process.env.NODE_ENV === 'production') {
+} else if (import.meta.env.MODE === 'production') {
   BASE_URL = ''
 } else {
   BASE_URL = ''
