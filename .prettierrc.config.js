@@ -4,5 +4,5 @@ module.exports = {
   printWidth: 80,
   singleQuote: true, //使用单引号
   trailingComma: "none",
-  semi: true, //句末使用分号
+  semi: false, //句末使用分号
 };

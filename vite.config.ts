@@ -1,34 +1,34 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 
-import { resolve } from "path"; // 安装 @types/node -S
+import * as path from 'path' // 安装 @types/node -S
 
-import importToCDN, { autoComplete } from "vite-plugin-cdn-import";
-import viteCompression from "vite-plugin-compression";
-import commonjs from "rollup-plugin-commonjs";
+import importToCDN, { autoComplete } from 'vite-plugin-cdn-import'
+import viteCompression from 'vite-plugin-compression'
+import commonjs from 'rollup-plugin-commonjs'
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  base: './',
   plugins: [
     vue(),
     importToCDN({
       modules: [
         {
-          name: "vue", // 因为依赖于 vue 所以要导入 vue 的 cdn
-          var: "Vue",
-          path: "https://unpkg.com/vue@next",
+          name: 'vue', // 因为依赖于 vue 所以要导入 vue 的 cdn
+          var: 'Vue',
+          path: 'https://unpkg.com/vue@next',
         },
         {
-          name: "element-plus", // element-plus 的包也要一起下载 main.ts 中也要全局导入写法
-          var: "ElementPlus",
-          path: "https://unpkg.com/element-plus",
-          css: "https://unpkg.com/element-plus/dist/index.css",
+          name: 'element-plus', // element-plus 的包也要一起下载 main.ts 中也要全局导入写法
+          var: 'ElementPlus',
+          path: 'https://unpkg.com/element-plus',
+          css: 'https://unpkg.com/element-plus/dist/index.css',
         },
-        autoComplete("axios"),
+        autoComplete('axios'),
         {
-          name: "vue-router",
-          var: "VueRouter",
-          path: "https://unpkg.com/vue-router@4.0.5/dist/vue-router.global.js",
+          name: 'vue-router',
+          var: 'VueRouter',
+          path: 'https://unpkg.com/vue-router@4.0.5/dist/vue-router.global.js',
         },
       ],
     }),
@@ -37,12 +37,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": resolve(__dirname, "src"),
-      comp: resolve(__dirname, "src/components"), // vue: 'https://esm.sh/vue@3.0.6', // 'element-plus': 'https://unpkg.com/element-plus'
+      '@': path.resolve(__dirname, 'src'),
+      comp: path.resolve(__dirname, 'src/components'), // vue: 'https://esm.sh/vue@3.0.6', // 'element-plus': 'https://unpkg.com/element-plus'
     },
   },
   build: {
-    minify: "terser", // 更新了 esbulid 如果使用 build 一定要加上这句
+    minify: 'terser', // 更新了 esbulid 如果使用 build 一定要加上这句
     terserOptions: {
       compress: {
         // 生产环境移除 console
@@ -51,4 +51,4 @@ export default defineConfig({
       },
     },
   },
-});
+})
