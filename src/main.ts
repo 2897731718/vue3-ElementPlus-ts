@@ -6,8 +6,6 @@ import ElementPlus from 'element-plus'
 import router from './router'
 import store from './store'
 
-import hyRequest from './service'
-
 const app = createApp(App)
 app.use(ElementPlus)
 app.use(router)
@@ -15,11 +13,12 @@ app.use(store)
 app.mount('#app')
 
 // 测试 axios 封装
-console.log(import.meta.env)
+console.log(import.meta.env.VITE_USE_MOCK)
 
+import hyRequest from './service'
 hyRequest
   .request({
-    url: '/home/multidata',
+    url: 'home/multidata',
     method: 'GET',
     headers: {},
     interceptors: {
@@ -37,3 +36,7 @@ hyRequest
   .then((res) => {
     console.log(res)
   })
+import axios from 'axios'
+axios.get('mock/getList').then((res) => {
+  console.log(res.data)
+})
