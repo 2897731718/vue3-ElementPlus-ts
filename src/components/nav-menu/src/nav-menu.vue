@@ -7,75 +7,36 @@
     <el-menu
       default-active="2"
       class="el-menu-vertical"
-      :collapse="collapse"
+      :collapse="props.collapse"
       background-color="#0c2135"
       text-color="#b7bdc3"
       active-text-color="#0a60bd"
     >
-      <template v-for="item in userMenus" :key="item.id">
-        <!-- 二级菜单 -->
-        <template v-if="item.type === 1">
-          <!-- 二级菜单的可以展开的标题 -->
-          <el-submenu :index="item.id + ''">
-            <template #title>
-              <i v-if="item.icon" :class="item.icon"></i>
-              <span>{{ item.name }}</span>
-            </template>
-            <!-- 遍历里面的item -->
-            <template v-for="subitem in item.children" :key="subitem.id">
-              <el-menu-item
-                :index="subitem.id + ''"
-                @click="handleMenuItemClick(subitem)"
-              >
-                <i v-if="subitem.icon" :class="subitem.icon"></i>
-                <span>{{ subitem.name }}</span>
-              </el-menu-item>
-            </template>
-          </el-submenu>
+      <el-sub-menu v-for="item in userMenus" :key="item.id">
+        <template #title>
+          <!-- <el-icon><location /></el-icon> -->
+          <span>{{ item.name }}</span>
         </template>
-        <!-- 一级菜单 -->
-        <template v-else-if="item.type === 2">
-          <el-menu-item :index="item.id + ''">
-            <i v-if="item.icon" :class="item.icon"></i>
-            <span>{{ item.name }}</span>
-          </el-menu-item>
-        </template>
-      </template>
+        <el-menu-item-group v-for="subitem in item.children" :key="subitem.id">
+          <el-menu-item :index="subitem.id + ''"
+            ><span>{{ subitem.name }}</span></el-menu-item
+          >
+        </el-menu-item-group>
+      </el-sub-menu>
     </el-menu>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue'
+<script setup lang="ts">
+import { computed, defineProps } from 'vue'
 import { useStore } from '@/store'
-import { useRouter } from 'vue-router'
+import { Location } from '@element-plus/icons-vue'
 
 // vuex - typescript  => pinia
-
-export default defineComponent({
-  props: {
-    collapse: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  setup() {
-    const store = useStore()
-    const userMenus = computed(() => store.state.login.userMenus)
-
-    const router = useRouter()
-
-    const handleMenuItemClick = (item: any) => {
-      console.log('--------')
-      router.push({
-        path: item.url ?? '/not-found',
-      })
-    }
-    return {
-      userMenus,
-      handleMenuItemClick,
-    }
-  },
+const store = useStore()
+const userMenus = computed(() => store.state.login.userMenus)
+const props = defineProps({
+  collapse: Boolean,
 })
 </script>
 

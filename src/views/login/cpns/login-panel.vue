@@ -44,7 +44,6 @@ const currentTab = ref('account')
 
 // 2.定义方法
 const handleLoginClick = () => {
-  console.log(accountRef.value)
   if (currentTab.value === 'account') {
     accountRef.value?.loginAction(isKeepPassword.value)
   } else {

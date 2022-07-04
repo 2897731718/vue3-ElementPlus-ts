@@ -28,7 +28,7 @@ export default [
     response: (res: any) => {
       return {
         code: 0,
-        menu,
+        data: info,
       }
     },
   },
@@ -38,7 +38,7 @@ export default [
     response: (res: any) => {
       return {
         code: 0,
-        info,
+        data: menu,
       }
     },
   },

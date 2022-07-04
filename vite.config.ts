@@ -25,6 +25,7 @@ export default defineConfig({
           var: 'ElementPlus',
           path: 'https://unpkg.com/element-plus',
           css: 'https://unpkg.com/element-plus/dist/index.css',
+          // icon: 'https//unpkg.com/@element-plus/icons-vue',
         },
         autoComplete('axios'),
         {
