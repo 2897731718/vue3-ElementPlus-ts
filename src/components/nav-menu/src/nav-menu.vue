@@ -14,7 +14,7 @@
     >
       <el-sub-menu v-for="item in userMenus" :key="item.id">
         <template #title>
-          <!-- <el-icon><location /></el-icon> -->
+          <el-icon><location /></el-icon>
           <span>{{ item.name }}</span>
         </template>
         <el-menu-item-group v-for="subitem in item.children" :key="subitem.id">
@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import { computed, defineProps } from 'vue'
 import { useStore } from '@/store'
-import { Location } from '@element-plus/icons-vue'
+// import { Location } from '@element-plus/icons-vue'
 
 // vuex - typescript  => pinia
 const store = useStore()
