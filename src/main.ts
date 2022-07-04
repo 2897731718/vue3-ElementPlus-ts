@@ -36,7 +36,7 @@ hyRequest
   .then((res) => {
     console.log(res)
   })
-import axios from 'axios'
-axios.get('mock/getList').then((res) => {
-  console.log(res.data)
-})
+// import axios from 'axios'
+// axios.get('mock/getMenu').then((res) => {
+//   console.log(res.data)
+// })

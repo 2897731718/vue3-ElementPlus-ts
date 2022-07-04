@@ -1,8 +1,8 @@
-import { createStore } from 'vuex'
+import { createStore, Store, useStore as useVuexStore } from 'vuex'
 
 import login from './login/login'
 
-import { IRootState } from './types'
+import { IRootState, IStoreType } from './types'
 // 总仓库
 const store = createStore<IRootState>({
   state() {
@@ -19,9 +19,13 @@ const store = createStore<IRootState>({
     login,
   },
 })
-
+// 登录使用的方法
 export function setupStore() {
   store.dispatch('login/loadLocalLogin')
 }
 
+// user 用来类型限制 重新封装发 useStore
+export function useStore(): Store<IStoreType> {
+  return useVuexStore()
+}
 export default store

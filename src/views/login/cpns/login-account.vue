@@ -42,7 +42,7 @@ const loginAction = (isKeepPassword: boolean) => {
         localCache.deleteCache('password')
       }
 
-      // 2.开始进行登录验证
+      // 2.开始进行登录验证 这里的方法在 store action 中有定义 名字要相同 传入账号密码参数
       store.dispatch('login/accountLoginAction', { ...account })
     }
   })

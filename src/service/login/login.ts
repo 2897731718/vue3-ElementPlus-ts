@@ -1,11 +1,12 @@
 import hyRequest from '../index'
+import axios from 'axios'
 
 import { IAccount, IDataType, ILoginResult } from './type'
 
 enum LoginAPI {
   AccountLogin = '/login',
-  LoginUserInfo = '/users/', // 用法: /users/1
-  UserMenus = '/role/', // 用法: role/1/menu
+  LoginUserInfo = '/getInfo', // 用法: /users/1
+  UserMenus = '/getMenu', // 用法: role/1/menu
 }
 // 登录方法 传入账号密码 发送 post 请求
 export function accountLoginRequest(account: IAccount) {
@@ -14,17 +15,11 @@ export function accountLoginRequest(account: IAccount) {
     data: account,
   })
 }
-
-export function requestUserInfoById(id: number) {
-  return hyRequest.get<IDataType>({
-    url: LoginAPI.LoginUserInfo + id,
-    showLoading: false,
-  })
+// 如果是实际项目 需要传递用户的唯一识别 userId 来获取
+export function requestUserInfoById() {
+  return axios.get<IDataType>('/mock' + LoginAPI.LoginUserInfo)
 }
 
-export function requestUserMenusByRoleId(id: number) {
-  return hyRequest.get<IDataType>({
-    url: LoginAPI.UserMenus + id + '/menu',
-    showLoading: false,
-  })
+export function requestUserMenusByRoleId() {
+  return axios.get<IDataType>('/mock' + LoginAPI.UserMenus)
 }
