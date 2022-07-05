@@ -4,6 +4,10 @@ import App from './App.vue'
 import ElementPlus from 'element-plus'
 // 全局的函数 其中过滤器也可以在这里面注册
 import { globalRegister } from './global'
+// 引入全局 iconfont 图标
+import '@/assets/font/iconfont.css'
+import 'normalize.css'
+import './assets/css/index.less'
 
 import router from './router'
 import store from './store'
