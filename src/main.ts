@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 import ElementPlus from 'element-plus'
+// 全局的函数 其中过滤器也可以在这里面注册
 import { globalRegister } from './global'
 
 import router from './router'
