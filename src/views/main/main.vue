@@ -6,7 +6,7 @@
       </el-aside>
       <el-container class="page">
         <el-header class="page-header">
-          <nav-header @foldChange="handleFoldChange" />
+          <nav-header @fold-change="handleFoldChange" />
         </el-header>
         <el-main class="page-content">
           <div class="page-info">

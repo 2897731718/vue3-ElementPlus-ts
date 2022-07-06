@@ -4,9 +4,11 @@
       <img class="img" src="~@/assets/img/logo.svg" alt="logo" />
       <span v-if="!collapse" class="title">Vue3+TS</span>
     </div>
-    <el-menu
+    <!-- 这个有 bug -->
+    <!-- <el-menu
       default-active="2"
       class="el-menu-vertical"
+      mode="vertical"
       :collapse="props.collapse"
       background-color="#0c2135"
       text-color="#b7bdc3"
@@ -18,11 +20,34 @@
           <span>{{ item.name }}</span>
         </template>
         <el-menu-item-group v-for="subitem in item.children" :key="subitem.id">
-          <el-menu-item :index="subitem.id + ''"
-            ><span>{{ subitem.name }}</span></el-menu-item
-          >
+          <el-menu-item :index="subitem.id">{{ subitem.name }}</el-menu-item>
         </el-menu-item-group>
       </el-sub-menu>
+    </el-menu> -->
+    <el-menu
+      default-active="2"
+      class="el-menu-vertical"
+      mode="vertical"
+      :collapse="props.collapse"
+      background-color="#0c2135"
+      text-color="#b7bdc3"
+      active-text-color="#0a60bd"
+    >
+      <template v-for="item in userMenus" :key="item.id + ''">
+        <el-sub-menu :index="item.id + ''">
+          <template #title>
+            <el-icon><location /></el-icon>
+            <span>{{ item.name }}</span>
+          </template>
+          <template v-for="subitem in item.children" :key="subitem.id + ''">
+            <el-menu-item
+              :index="subitem.id + ''"
+              @click="handleMenuItemClick(subitem)"
+              >{{ subitem.name }}</el-menu-item
+            >
+          </template>
+        </el-sub-menu>
+      </template>
     </el-menu>
   </div>
 </template>
@@ -30,14 +55,22 @@
 <script setup lang="ts">
 import { computed, defineProps } from 'vue'
 import { useStore } from '@/store'
+import { useRouter } from 'vue-router'
 // import { Location } from '@element-plus/icons-vue'
 
 // vuex - typescript  => pinia
 const store = useStore()
+const router = useRouter()
 const userMenus = computed(() => store.state.login.userMenus)
 const props = defineProps({
   collapse: Boolean,
 })
+const handleMenuItemClick = (item: any) => {
+  console.log(item)
+  router.push({
+    path: item.url ?? '/not-found',
+  })
+}
 </script>
 
 <style scoped lang="less">

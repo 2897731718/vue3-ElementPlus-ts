@@ -10,7 +10,7 @@ const menu = mock([
     children: [
       {
         id: 39,
-        name: '1234',
+        name: '你的故事',
         type: 2,
         url: '/main/analysis/overview',
         icon: 'el-icon-monitor',
@@ -28,10 +28,20 @@ const menu = mock([
         children: null,
         parentId: 38,
       },
+      {
+        id: 41,
+        name: '职业技术',
+        type: 2,
+        url: '/main/analysis/dashboard',
+        icon: 'el-icon-monitor',
+        sort: 14,
+        children: null,
+        parentId: 38,
+      },
     ],
   },
   {
-    id: 41,
+    id: 42,
     name: () => Random.name(),
     type: 1,
     url: '/main/story',
@@ -39,14 +49,14 @@ const menu = mock([
     sort: 4,
     children: [
       {
-        id: 42,
+        id: 43,
         name: '你的物品',
         type: 2,
         url: '/main/story/chat',
         icon: 'el-icon-monitor',
         sort: 2,
         children: null,
-        parentId: 41,
+        parentId: 42,
       },
     ],
   },
