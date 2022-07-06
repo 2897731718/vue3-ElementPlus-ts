@@ -3,5 +3,5 @@ export default {
   path: '/main/story/list',
   name: 'list',
   component: list,
-  children: []
+  children: [],
 }

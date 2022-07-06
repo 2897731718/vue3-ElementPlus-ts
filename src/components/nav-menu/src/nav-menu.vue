@@ -25,7 +25,7 @@
       </el-sub-menu>
     </el-menu> -->
     <el-menu
-      default-active="2"
+      :default-active="defaultValue"
       class="el-menu-vertical"
       mode="vertical"
       :collapse="props.collapse"
@@ -53,19 +53,38 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { computed, defineProps, ref } from 'vue'
 import { useStore } from '@/store'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+
+import { pathMapToMenu } from '@/utils/map-menus'
 // import { Location } from '@element-plus/icons-vue'
 
 // vuex - typescript  => pinia
-const store = useStore()
-const router = useRouter()
-const userMenus = computed(() => store.state.login.userMenus)
 const props = defineProps({
   collapse: Boolean,
 })
-console.log(store.state.login.userMenus)
+
+const store = useStore()
+const userMenus = computed(() => store.state.login.userMenus)
+
+// 获取当前路由路径
+const router = useRouter()
+const route = useRoute()
+const currentPath = route.path
+
+// 更新面包屑对应的内容
+const menu = pathMapToMenu(userMenus.value, currentPath)
+// 定义默认的 menu 选中 第一次进入页面 或者刷新之后 选中的 menu
+console.log(menu)
+/*
++ 这里有个小坑 就是 第一次进来的时候 路径是 /main
+  + 那么不可能匹配到路由  返回的就是 undefined 就会报错
++ 解决方法
+  + 就是匹配到 /main 的时候在进行一次重定向就行了
+*/
+const defaultValue = ref(menu.id + '')
+
 const handleMenuItemClick = (item: any) => {
   console.log(item.url)
   console.log(router)
