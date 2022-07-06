@@ -65,8 +65,10 @@ const userMenus = computed(() => store.state.login.userMenus)
 const props = defineProps({
   collapse: Boolean,
 })
+console.log(store.state.login.userMenus)
 const handleMenuItemClick = (item: any) => {
-  console.log(item)
+  console.log(item.url)
+  console.log(router)
   router.push({
     path: item.url ?? '/not-found',
   })

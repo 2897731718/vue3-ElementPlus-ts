@@ -19,7 +19,7 @@ const store = createStore<IRootState>({
     login,
   },
 })
-// 登录使用的方法
+// 重新获取登陆后的信息 动态路由 界面刷新时使用
 export function setupStore() {
   store.dispatch('login/loadLocalLogin')
 }
