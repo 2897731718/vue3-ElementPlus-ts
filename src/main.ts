@@ -34,7 +34,7 @@ app.use(router)
 app.use(store)
 app.mount('#app')
 
-// 测试 axios 封装
+// 测试 axios 封装 及 反向代理
 // console.log(import.meta.env.VITE_USE_MOCK)
 
 // import hyRequest from './service'
@@ -63,8 +63,9 @@ app.mount('#app')
 //   console.log(res.data)
 // })
 
-const routeFiles = import.meta.globEager('@/router/main/**/*.ts')
-console.log(routeFiles)
-for (const path in routeFiles) {
-  console.log(routeFiles[path].default.path)
-}
+// 测试动态路由
+// const routeFiles = import.meta.globEager('@/router/main/**/*.ts')
+// console.log(routeFiles)
+// for (const path in routeFiles) {
+//   console.log(routeFiles[path].default.path)
+// }
