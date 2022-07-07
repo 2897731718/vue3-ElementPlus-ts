@@ -2,7 +2,7 @@
   <div class="main">
     <el-container class="main-content">
       <el-aside :width="isCollapse ? '60px' : '210px'">
-        <nav-menu :collapse="isCollapse" />
+        <nav-menus :collapse="isCollapse" />
       </el-aside>
       <el-container class="page">
         <el-header class="page-header">
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import NavMenu from '@/components/nav-menu'
+import NavMenus from '@/components/nav-menus'
 import NavHeader from '@/components/nav-header'
 import { ref } from 'vue'
 

@@ -62,7 +62,10 @@ import { pathMapToMenu } from '@/utils/map-menus'
 
 // vuex - typescript  => pinia
 const props = defineProps({
-  collapse: Boolean,
+  collapse: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const store = useStore()
@@ -73,10 +76,8 @@ const router = useRouter()
 const route = useRoute()
 const currentPath = route.path
 
-// 更新面包屑对应的内容
 const menu = pathMapToMenu(userMenus.value, currentPath)
 // 定义默认的 menu 选中 第一次进入页面 或者刷新之后 选中的 menu
-console.log(menu)
 /*
 + 这里有个小坑 就是 第一次进来的时候 路径是 /main
   + 那么不可能匹配到路由  返回的就是 undefined 就会报错

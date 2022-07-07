@@ -20,6 +20,7 @@ export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
   //   const route = require('../router/main' + key.split('.')[1])
   //   allRoutes.push(route.default)
   // })
+  // vite
   const routeFiles = import.meta.globEager('@/router/main/**/*.ts')
   // console.log(routeFiles)
   for (const path in routeFiles) {

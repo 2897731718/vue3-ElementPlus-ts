@@ -19,16 +19,6 @@ const menu = mock([
         parentId: 1,
       },
       {
-        id: 3,
-        name: 'menu',
-        type: 2,
-        url: '/main/system/menu',
-        icon: '',
-        sort: 3,
-        children: null,
-        parentId: 1,
-      },
-      {
         id: 4,
         name: 'role',
         type: 2,

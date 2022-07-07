@@ -8,10 +8,10 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'role',
+  name: 'Role',
   setup() {
     return {}
-  }
+  },
 })
 </script>
 
