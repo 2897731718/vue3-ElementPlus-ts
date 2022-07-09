@@ -87,8 +87,8 @@ const menu = pathMapToMenu(userMenus.value, currentPath)
 const defaultValue = ref(menu.id + '')
 
 const handleMenuItemClick = (item: any) => {
-  console.log(item.url)
-  console.log(router)
+  // console.log(item.url)
+  // console.log(router)
   router.push({
     path: item.url ?? '/not-found',
   })

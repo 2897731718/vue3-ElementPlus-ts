@@ -66,7 +66,7 @@ export function pathMapToMenu(
   currentPath: string,
   breadcrumbs?: IBreadcrumb[]
 ): any {
-  console.log(userMenus, currentPath)
+  // console.log(userMenus, currentPath)
   for (const menu of userMenus) {
     // 1 代表外层 会递归遍历向里面查找
     if (menu.type === 1) {

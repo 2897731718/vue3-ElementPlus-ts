@@ -1,7 +1,6 @@
 <template>
   <div class="user">
     <page-search :search-form-config="searchFormConfig" />
-
     <div class="content">
       <!-- <hy-table :list-data="userList" :prop-list="propList">
         <template #status="scope">
@@ -11,64 +10,36 @@
           <strong>{{ scope.row.createAt }}</strong>
         </template>
       </hy-table> -->
+      <el-button @click="getChildren">获取子组件 input</el-button>
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useStore } from '@/store'
+<script setup lang="ts">
+import { ref } from 'vue'
+// import { useStore } from '@/store'
 
 import PageSearch from '@/components/page-search'
 // import HyTable from '@/base-ui/table'
 
 import { searchFormConfig } from './config/search.config'
 
-export default defineComponent({
-  name: 'User',
-  components: {
-    PageSearch,
-    // HyTable,
-  },
-  setup() {
-    const store = useStore()
-    // store.dispatch('system/getPageListAction', {
-    //   pageUrl: '/users/list',
-    //   queryInfo: {
-    //     offset: 0,
-    //     size: 10,
-    //   },
-    // })
-
-    // const userList = computed(() => store.state.system.userList)
-    // const userCount = computed(() => store.state.system.userCount)
-
-    const propList = [
-      { prop: 'name', label: '用户名', minWidth: '100' },
-      { prop: 'realname', label: '真实姓名', minWidth: '100' },
-      { prop: 'cellphone', label: '手机号码', minWidth: '100' },
-      { prop: 'enable', label: '状态', minWidth: '100', slotName: 'status' },
-      {
-        prop: 'createAt',
-        label: '创建时间',
-        minWidth: '250',
-        slotName: 'createAt',
-      },
-      {
-        prop: 'updateAt',
-        label: '更新时间',
-        minWidth: '250',
-        slotName: 'updateAt',
-      },
-    ]
-
-    return {
-      searchFormConfig,
-      // userList,
-      propList,
-    }
-  },
+const formData = ref({
+  id: '',
+  name: '',
+  password: '',
+  sport: '',
+  createTime: '',
 })
+// console.log(formData, 'user')
+let test = ref({
+  str: '12',
+})
+
+const getChildren = function (e: any) {
+  console.log(test.value.str, 'user', e)
+  test.value.str = ''
+}
 </script>
 
 <style scoped>
