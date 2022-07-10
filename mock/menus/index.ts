@@ -9,6 +9,16 @@ const menu = mock([
     sort: 1,
     children: [
       {
+        id: 5,
+        name: 'user',
+        type: 2,
+        url: '/main/system/user',
+        icon: '',
+        sort: 5,
+        children: null,
+        parentId: 1,
+      },
+      {
         id: 2,
         name: 'department',
         type: 2,
@@ -25,16 +35,6 @@ const menu = mock([
         url: '/main/system/role',
         icon: '',
         sort: 4,
-        children: null,
-        parentId: 1,
-      },
-      {
-        id: 5,
-        name: 'user',
-        type: 2,
-        url: '/main/system/user',
-        icon: '',
-        sort: 5,
         children: null,
         parentId: 1,
       },

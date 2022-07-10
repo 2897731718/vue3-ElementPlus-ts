@@ -1,45 +1,33 @@
 <template>
   <div class="user">
     <page-search :search-form-config="searchFormConfig" />
-    <div class="content">
-      <!-- <hy-table :list-data="userList" :prop-list="propList">
-        <template #status="scope">
-          <el-button>{{ scope.row.enable ? '启用' : '禁用' }}</el-button>
-        </template>
-        <template #createAt="scope">
-          <strong>{{ scope.row.createAt }}</strong>
-        </template>
-      </hy-table> -->
-      <el-button @click="getChildren">获取子组件 input</el-button>
-    </div>
+    <page-content
+      :content-table-config="contentTableConfig"
+      :data-list="resData.dataList"
+      page-name="users"
+    ></page-content>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-// import { useStore } from '@/store'
+import axios from 'axios'
+import { reactive } from 'vue'
 
 import PageSearch from '@/components/page-search'
-// import HyTable from '@/base-ui/table'
+import PageContent from '@/components/page-content'
 
 import { searchFormConfig } from './config/search.config'
+import { contentTableConfig } from './config/content.config'
 
-const formData = ref({
-  id: '',
-  name: '',
-  password: '',
-  sport: '',
-  createTime: '',
-})
-// console.log(formData, 'user')
-let test = ref({
-  str: '12',
+let resData = reactive({
+  dataList: [],
 })
 
-const getChildren = function (e: any) {
-  console.log(test.value.str, 'user', e)
-  test.value.str = ''
-}
+axios.get('mock/system/getUserList').then((res) => {
+  console.log(res.data.data.user)
+  resData.dataList = res.data.data.user
+  console.log(resData.dataList, 'user')
+})
 </script>
 
 <style scoped>

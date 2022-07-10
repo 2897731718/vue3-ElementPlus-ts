@@ -40,7 +40,8 @@ const formData = ref(formOriginData)
 const handleResetClick = () => {
   // for (const key in formOriginData) {
   //   formData.value[`${key}`] = formOriginData[key]
-  // }
+  // }d
+  console.log(formData)
   formData.value = formOriginData
   emit('resetBtnClick')
 }

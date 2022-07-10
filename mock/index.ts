@@ -3,6 +3,7 @@ import { mock, Random } from 'mockjs'
 
 import menu from './menus'
 import info from './info'
+import user from './main/system/user'
 const dataGoods = mock({
   'list|10': [
     {
@@ -39,6 +40,16 @@ export default [
       return {
         code: 0,
         data: menu,
+      }
+    },
+  },
+  {
+    url: '/mock/system/getUserList',
+    method: 'get',
+    response: (res: any) => {
+      return {
+        code: 0,
+        data: user,
       }
     },
   },
