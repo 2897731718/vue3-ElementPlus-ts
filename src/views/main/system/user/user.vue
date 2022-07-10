@@ -3,7 +3,7 @@
     <page-search :search-form-config="searchFormConfig" />
     <page-content
       :content-table-config="contentTableConfig"
-      :data-list="resData.dataList"
+      :res-data="resData"
       page-name="users"
     ></page-content>
   </div>
@@ -21,12 +21,13 @@ import { contentTableConfig } from './config/content.config'
 
 let resData = reactive({
   dataList: [],
+  dataCount: 0,
 })
 
 axios.get('mock/system/getUserList').then((res) => {
-  console.log(res.data.data.user)
-  resData.dataList = res.data.data.user
-  console.log(resData.dataList, 'user')
+  let user = res.data.data.user
+  resData.dataList = user
+  resData.dataCount = user.length
 })
 </script>
 

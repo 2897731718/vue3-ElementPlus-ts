@@ -1,19 +1,22 @@
 <template>
   <div class="page-content">
     <hy-table
-      :data-list="props.dataList"
+      v-model:page="pageInfo"
+      :list-count="props.resData.dataCount"
+      :data-list="props.resData.dataList"
       :config-list="props.contentTableConfig.configList"
+      @selection-change="selectionChange"
     >
       <!-- 1.header中的插槽 -->
       <template #headerHandler>
-        <el-button type="primary" size="medium">新建用户</el-button>
+        <el-button type="primary" size="default">新建用户</el-button>
       </template>
 
       <!-- 2.列中的插槽 -->
       <template #status="scope">
         <el-button
           plain
-          size="mini"
+          size="small"
           :type="scope.row.enable ? 'success' : 'danger'"
         >
           {{ scope.row.enable ? '启用' : '禁用' }}
@@ -27,12 +30,8 @@
       </template>
       <template #handler>
         <div class="handle-btns">
-          <el-button icon="el-icon-edit" size="mini" type="text"
-            >编辑</el-button
-          >
-          <el-button icon="el-icon-delete" size="mini" type="text"
-            >删除</el-button
-          >
+          <el-button :icon="Edit" size="small" type="primary"></el-button>
+          <el-button :icon="Delete" size="small" type="danger"></el-button>
         </div>
       </template>
     </hy-table>
@@ -40,7 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { Edit, Delete } from '@element-plus/icons-vue'
+import { defineProps, defineEmits, watch, ref } from 'vue'
 
 import HyTable from '@/base-ui/table'
 
@@ -56,15 +56,37 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  // 具体数据
-  dataList: {
-    type: Array,
-    default: () => [
-      // zhu
-    ],
+  // 后台信息数据 包括数据总数
+  resData: {
+    type: Object,
+    default: () => {
+      // dataList dataCount
+    },
+  },
+  pageInfo: {
+    type: Object,
+    default: () => {
+      // currentPage: 0, pageSize: 10
+    },
   },
 })
-console.log(props.dataList, 'content')
+
+// 1.双向绑定pageInfo
+const pageInfo = ref({ currentPage: 0, pageSize: 10 })
+
+const emit = defineEmits([
+  'update: pageInfo',
+  'update: resData',
+  'selectionChange',
+])
+watch(props.resData, () => {
+  emit('update: pageInfo', props.pageInfo)
+  emit('update: resData', props.resData)
+})
+
+const selectionChange = (value: any) => {
+  emit('selectionChange', value)
+}
 </script>
 
 <style scoped>

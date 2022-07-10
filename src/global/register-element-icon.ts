@@ -1,9 +1,11 @@
 import { App } from 'vue'
 // import 'element-plus/lib/theme-chalk/base.css'
-import { Location } from '@element-plus/icons-vue'
+import { Location, Edit, Delete } from '@element-plus/icons-vue'
 
 const compIcons = {
   Location,
+  Edit,
+  Delete,
 }
 
 export default function (app: App): void {

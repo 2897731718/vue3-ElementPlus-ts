@@ -119,21 +119,10 @@ const props = defineProps({
 
 */
 const emit = defineEmits(['update:modelValue'])
-// 双向绑定页面接收的值 对父组件传过来的 modelValue 进行监听
-// const formData = ref({ ...props.modelValue })
-// 因为是父子组件双向绑定 所以使用 watch 监听数值 变化
-// 如果数据变动 就要使用 emit 传递给 父组件
-// watch(
-//   formData,
-//   (newValue) => {
-//     emit('update:modelValue', newValue)
-//   },
-//   {
-//     deep: true,
-//   }
-// )
-
 const handleValueChange = (value: any, field: string) => {
+  // console.log(props.modelValue, value, field, { [field]: value })
+  // 因为获取到的是一个对象形式的 输入框中的信息
+  // 所以要重新组成对象返回
   emit('update:modelValue', { ...props.modelValue, [field]: value })
 }
 </script>
